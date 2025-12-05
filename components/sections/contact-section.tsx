@@ -11,6 +11,12 @@ export function ContactSection() {
   const [staticNoise, setStaticNoise] = useState(false)
   const [radioMessage, setRadioMessage] = useState("")
   const [isWalkieTalkieOpen, setIsWalkieTalkieOpen] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
+
+  const handleOpenWalkieTalkie = () => {
+    setScrollPosition(window.scrollY)
+    setIsWalkieTalkieOpen(true)
+  }
 
   const radioMessages = [
     "...this is Hawkins Police...",
@@ -246,13 +252,9 @@ export function ContactSection() {
 
           <div className="text-center">
             <button
-              onClick={() => setIsWalkieTalkieOpen(true)}
-              className="group inline-flex items-center gap-2 sm:gap-3 px-6 sm:px-10 py-3 sm:py-5 rounded bg-stranger-red text-primary-foreground font-bold stranger-text tracking-wider hover:scale-105 transition-transform duration-300 relative overflow-hidden"
-              style={{
-                boxShadow: "0 0 30px oklch(0.55 0.25 25), 0 0 60px oklch(0.55 0.25 25 / 0.5)",
-              }}
+              onClick={handleOpenWalkieTalkie}
+              className="w-full mt-4 py-2 px-4 bg-stranger-red/10 hover:bg-stranger-red/20 border border-stranger-red/50 text-stranger-red font-mono text-xs sm:text-sm tracking-wider rounded flex items-center justify-center gap-2 transition-all duration-300"
             >
-              <span className="absolute inset-0 border-2 border-primary-foreground/50 rounded animate-pulse" />
               <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
               <FlickeringText
                 text="INITIATE CONTACT"
@@ -272,7 +274,7 @@ export function ContactSection() {
             isFlipped={isFlipped}
           />
           <FlickeringText
-            text="© 2025 Hawkins Police Department. All supernatural activities logged."
+            text=" 2025 Hawkins Police Department. All supernatural activities logged."
             className="text-muted-foreground/60 text-[8px] sm:text-xs font-mono mt-2 block"
             intensity="low"
             isFlipped={isFlipped}
@@ -284,7 +286,9 @@ export function ContactSection() {
       <WalkieTalkieModal
         isOpen={isWalkieTalkieOpen}
         onClose={() => setIsWalkieTalkieOpen(false)}
-        phoneNumber="917819996112"
+        phoneNumber="7819996112"
+        scrollPosition={scrollPosition}
+        isFlipped={isFlipped}
       />
     </section>
   )

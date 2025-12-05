@@ -10,9 +10,11 @@ interface WalkieTalkieModalProps {
   isOpen: boolean
   onClose: () => void
   phoneNumber: string
+  scrollPosition?: number
+  isFlipped?: boolean
 }
 
-export function WalkieTalkieModal({ isOpen, onClose, phoneNumber }: WalkieTalkieModalProps) {
+export function WalkieTalkieModal({ isOpen, onClose, phoneNumber, scrollPosition = 0, isFlipped = false }: WalkieTalkieModalProps) {
   const [message, setMessage] = useState("")
   const [isTransmitting, setIsTransmitting] = useState(false)
   const [staticNoise, setStaticNoise] = useState(false)
@@ -100,7 +102,13 @@ export function WalkieTalkieModal({ isOpen, onClose, phoneNumber }: WalkieTalkie
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4">
+    <div 
+      className="fixed inset-0 z-50 flex items-start justify-center p-2 sm:p-4 overflow-y-auto transition-transform duration-500"
+      style={{
+        top: `${scrollPosition}px`,
+        transform: isFlipped ? 'rotate(180deg)' : 'none'
+      }}
+    >
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose} />
 
