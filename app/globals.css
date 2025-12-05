@@ -1,0 +1,844 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Stranger Things dark theme - keeping required shadcn structure */
+:root {
+  --background: oklch(0.08 0.01 280);
+  --foreground: oklch(0.95 0.01 0);
+  --card: oklch(0.12 0.02 280);
+  --card-foreground: oklch(0.95 0.01 0);
+  --popover: oklch(0.1 0.01 280);
+  --popover-foreground: oklch(0.95 0.01 0);
+  --primary: oklch(0.55 0.25 25);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0.08 280);
+  --secondary-foreground: oklch(0.95 0.01 0);
+  --muted: oklch(0.18 0.03 280);
+  --muted-foreground: oklch(0.65 0.02 0);
+  --accent: oklch(0.45 0.18 250);
+  --accent-foreground: oklch(0.95 0.01 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.25 0.05 280);
+  --input: oklch(0.2 0.03 280);
+  --ring: oklch(0.55 0.25 25);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.1 0.02 280);
+  --sidebar-foreground: oklch(0.95 0.01 0);
+  --sidebar-primary: oklch(0.55 0.25 25);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.25 0.08 280);
+  --sidebar-accent-foreground: oklch(0.95 0.01 0);
+  --sidebar-border: oklch(0.25 0.05 280);
+  --sidebar-ring: oklch(0.55 0.25 25);
+
+  /* Custom Stranger Things colors */
+  --stranger-red: oklch(0.55 0.28 25);
+  --stranger-blue: oklch(0.35 0.15 260);
+  --stranger-glow: oklch(0.6 0.3 25);
+  --upside-down: oklch(0.06 0.02 280);
+}
+
+.dark {
+  --background: oklch(0.08 0.01 280);
+  --foreground: oklch(0.95 0.01 0);
+  --card: oklch(0.12 0.02 280);
+  --card-foreground: oklch(0.95 0.01 0);
+  --popover: oklch(0.1 0.01 280);
+  --popover-foreground: oklch(0.95 0.01 0);
+  --primary: oklch(0.55 0.25 25);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.25 0.08 280);
+  --secondary-foreground: oklch(0.95 0.01 0);
+  --muted: oklch(0.18 0.03 280);
+  --muted-foreground: oklch(0.65 0.02 0);
+  --accent: oklch(0.45 0.18 250);
+  --accent-foreground: oklch(0.95 0.01 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.25 0.05 280);
+  --input: oklch(0.2 0.03 280);
+  --ring: oklch(0.55 0.25 25);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.1 0.02 280);
+  --sidebar-foreground: oklch(0.95 0.01 0);
+  --sidebar-primary: oklch(0.55 0.25 25);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.25 0.08 280);
+  --sidebar-accent-foreground: oklch(0.95 0.01 0);
+  --sidebar-border: oklch(0.25 0.05 280);
+  --sidebar-ring: oklch(0.55 0.25 25);
+}
+
+@theme inline {
+  --font-sans: "Geist", "Geist Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  /* Custom Stranger Things colors */
+  --color-stranger-red: var(--stranger-red);
+  --color-stranger-blue: var(--stranger-blue);
+  --color-stranger-glow: var(--stranger-glow);
+  --color-upside-down: var(--upside-down);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Enhanced cube floating animation */
+@keyframes cube-float {
+  0%,
+  100% {
+    transform: translateY(0px) rotateX(5deg) rotateY(5deg);
+  }
+  25% {
+    transform: translateY(-8px) rotateX(8deg) rotateY(-3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateX(3deg) rotateY(-8deg);
+  }
+  75% {
+    transform: translateY(-8px) rotateX(-3deg) rotateY(5deg);
+  }
+}
+
+/* Vecna tendril animations */
+@keyframes tendril-crawl {
+  0% {
+    stroke-dashoffset: 2000;
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.3;
+  }
+}
+
+.animate-tendril-1 {
+  stroke-dasharray: 2000;
+  animation: tendril-crawl 8s ease-in-out infinite;
+}
+
+.animate-tendril-2 {
+  stroke-dasharray: 2000;
+  animation: tendril-crawl 10s ease-in-out infinite;
+  animation-delay: -2s;
+}
+
+.animate-tendril-3 {
+  stroke-dasharray: 2000;
+  animation: tendril-crawl 9s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+.animate-tendril-4 {
+  stroke-dasharray: 2000;
+  animation: tendril-crawl 11s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+/* Vecna clock spin animations */
+@keyframes clock-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes clock-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-clock-spin {
+  transform-origin: center;
+  animation: clock-spin 30s linear infinite;
+}
+
+.animate-clock-spin-reverse {
+  transform-origin: center;
+  animation: clock-spin-reverse 20s linear infinite;
+}
+
+/* Flickering animation for text */
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--stranger-red), 0 0 20px var(--stranger-red), 0 0 30px var(--stranger-red);
+  }
+  5% {
+    opacity: 0.8;
+    text-shadow: 0 0 5px var(--stranger-red);
+  }
+  10% {
+    opacity: 1;
+    text-shadow: 0 0 15px var(--stranger-red), 0 0 25px var(--stranger-red);
+  }
+  15% {
+    opacity: 0.9;
+    text-shadow: 0 0 8px var(--stranger-red);
+  }
+  20% {
+    opacity: 1;
+    text-shadow: 0 0 12px var(--stranger-red), 0 0 22px var(--stranger-red);
+  }
+  25% {
+    opacity: 0.85;
+    text-shadow: 0 0 6px var(--stranger-red);
+  }
+  30% {
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 0.7;
+  }
+  94% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 0.6;
+  }
+  96% {
+    opacity: 1;
+  }
+}
+
+@keyframes subtle-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.92;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.88;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.95;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px var(--stranger-red), 0 0 40px var(--stranger-red);
+  }
+  50% {
+    box-shadow: 0 0 30px var(--stranger-red), 0 0 60px var(--stranger-red), 0 0 80px var(--stranger-red);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes lightning {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  20% {
+    opacity: 0;
+  }
+}
+
+.animate-flicker {
+  animation: flicker 3s infinite;
+}
+
+.animate-subtle-flicker {
+  animation: subtle-flicker 2s infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.stranger-text {
+  font-family: "Geist", sans-serif;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* Enhanced Stranger Things cursor - Demogorgon hand style */
+.stranger-cursor,
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cdefs%3E%3Cfilter id='glow'%3E%3CfeGaussianBlur stdDeviation='1.5' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23glow)'%3E%3C!-- Demogorgon petal/claw cursor --%3E%3Cpath d='M20 2 L22 15 L20 12 L18 15 Z' fill='%23DC2626' stroke='%238B0000' stroke-width='0.5'/%3E%3Cpath d='M12 6 L17 16 L15 14 L13 17 Z' fill='%23DC2626' stroke='%238B0000' stroke-width='0.5' transform='rotate(-30 15 12)'/%3E%3Cpath d='M28 6 L23 16 L25 14 L27 17 Z' fill='%23DC2626' stroke='%238B0000' stroke-width='0.5' transform='rotate(30 25 12)'/%3E%3Cpath d='M8 12 L16 18 L14 17 L12 20 Z' fill='%23B91C1C' stroke='%238B0000' stroke-width='0.5' transform='rotate(-50 13 16)'/%3E%3Cpath d='M32 12 L24 18 L26 17 L28 20 Z' fill='%23B91C1C' stroke='%238B0000' stroke-width='0.5' transform='rotate(50 27 16)'/%3E%3Ccircle cx='20' cy='20' r='4' fill='%23450a0a' stroke='%23DC2626' stroke-width='1'/%3E%3Ccircle cx='20' cy='20' r='2' fill='%23DC2626'/%3E%3C/g%3E%3C/svg%3E")
+    20 20, auto;
+}
+
+/* Pointer cursor for interactive elements - Vecna's reaching hand */
+a,
+button,
+[role="button"],
+.clickable,
+input[type="submit"],
+input[type="button"] {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cdefs%3E%3Cfilter id='glowPointer'%3E%3CfeGaussianBlur stdDeviation='2' result='coloredBlur'/%3E%3CfeMerge%3E%3CfeMergeNode in='coloredBlur'/%3E%3CfeMergeNode in='SourceGraphic'/%3E%3C/feMerge%3E%3C/filter%3E%3C/defs%3E%3Cg filter='url(%23glowPointer)'%3E%3C!-- Vecna hand reaching --%3E%3Cpath d='M24 4 C24 4 26 16 26 20 L24 18 L22 20 C22 16 24 4 24 4' fill='%23DC2626' stroke='%23991B1B' stroke-width='0.5'/%3E%3Cpath d='M16 8 C16 8 20 18 21 22 L19 20 L17 23 C17 18 16 8 16 8' fill='%23DC2626' stroke='%23991B1B' stroke-width='0.5'/%3E%3Cpath d='M32 8 C32 8 28 18 27 22 L29 20 L31 23 C31 18 32 8 32 8' fill='%23DC2626' stroke='%23991B1B' stroke-width='0.5'/%3E%3Cpath d='M10 14 C10 14 17 22 19 26 L17 24 L14 28 C15 23 10 14 10 14' fill='%23B91C1C' stroke='%23991B1B' stroke-width='0.5'/%3E%3Cpath d='M38 14 C38 14 31 22 29 26 L31 24 L34 28 C33 23 38 14 38 14' fill='%23B91C1C' stroke='%23991B1B' stroke-width='0.5'/%3E%3Cellipse cx='24' cy='32' rx='10' ry='8' fill='%23450a0a' stroke='%23DC2626' stroke-width='1'/%3E%3Cellipse cx='24' cy='32' rx='5' ry='4' fill='%237F1D1D'/%3E%3Ccircle cx='24' cy='32' r='2' fill='%23DC2626'%3E%3Canimate attributeName='r' values='2;3;2' dur='1s' repeatCount='indefinite'/%3E%3C/circle%3E%3C/g%3E%3C/svg%3E")
+    24 24, pointer;
+}
+
+/* Upside Down spore floating animation */
+@keyframes upside-down-spore {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px) scale(0.5);
+    opacity: 0;
+  }
+}
+
+.animate-upside-down-spore {
+  animation: upside-down-spore linear infinite;
+}
+
+/* Upside Down transition glitch effect */
+@keyframes upside-down-glitch {
+  0% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+  10% {
+    transform: translate(-5px, 5px);
+    filter: hue-rotate(90deg);
+  }
+  20% {
+    transform: translate(5px, -5px);
+    filter: hue-rotate(180deg);
+  }
+  30% {
+    transform: translate(-3px, -3px);
+    filter: hue-rotate(270deg);
+  }
+  40% {
+    transform: translate(3px, 3px);
+    filter: hue-rotate(360deg);
+  }
+  50% {
+    transform: translate(0);
+    filter: hue-rotate(180deg);
+  }
+  100% {
+    transform: translate(0);
+    filter: hue-rotate(0deg);
+  }
+}
+
+.animate-upside-down-glitch {
+  animation: upside-down-glitch 0.8s ease-out;
+}
+
+/* Flash out animation for transition */
+@keyframes flash-out {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-flash-out {
+  animation: flash-out 0.8s ease-out forwards;
+}
+
+/* Particle burst animation */
+@keyframes particle-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) translateX(var(--tx, 100px)) translateY(var(--ty, 100px));
+    opacity: 0;
+  }
+}
+
+.animate-particle-burst {
+  animation: particle-burst 0.8s ease-out forwards;
+}
+
+/* Glitch line animation */
+@keyframes glitch-line {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+}
+
+.animate-glitch-line {
+  animation: glitch-line 0.5s ease-out forwards;
+}
+
+/* Christmas light bulb flicker animation for skills section */
+@keyframes bulb-flicker {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  10% {
+    opacity: 0.8;
+    filter: brightness(0.8);
+  }
+  20% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+  30% {
+    opacity: 0.9;
+    filter: brightness(0.9);
+  }
+  40% {
+    opacity: 1;
+    filter: brightness(1.1);
+  }
+  50% {
+    opacity: 0.85;
+    filter: brightness(0.85);
+  }
+  60% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  70% {
+    opacity: 0.95;
+    filter: brightness(1.15);
+  }
+  80% {
+    opacity: 1;
+    filter: brightness(1);
+  }
+  90% {
+    opacity: 0.9;
+    filter: brightness(0.95);
+  }
+}
+
+.animate-bulb-flicker {
+  animation: bulb-flicker 0.5s ease-in-out infinite;
+}
+
+/* Arcade light animation for achievements section */
+@keyframes arcade-light {
+  0%,
+  100% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+  50% {
+    opacity: 0.4;
+    filter: brightness(0.6);
+  }
+}
+
+.animate-arcade-light {
+  animation: arcade-light 1s ease-in-out infinite;
+}
+
+/* Slow spin animation for game mastery badges */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* VHS tracking effect for experience section */
+@keyframes vhs-tracking {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-2px);
+  }
+  20% {
+    transform: translateX(2px);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-vhs-tracking {
+  animation: vhs-tracking 0.3s ease-in-out infinite;
+}
+
+/* Adding pendulum animation for grandfather clock */
+@keyframes pendulum {
+  0%,
+  100% {
+    transform: rotate(-12deg);
+  }
+  50% {
+    transform: rotate(12deg);
+  }
+}
+
+.animate-pendulum {
+  transform-origin: top center;
+  animation: pendulum 2s ease-in-out infinite;
+}
+
+/* Float up animation for particles */
+@keyframes floatUp {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: floatUp 10s linear infinite;
+}
+
+/* Blood drip animation for horror navbar */
+@keyframes bloodDrip {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+}
+
+@keyframes bloodDripHeight {
+  0% {
+    height: 0px;
+  }
+  50% {
+    height: 30px;
+  }
+  100% {
+    height: 0px;
+  }
+}
+
+/* Fade in up animation for mobile menu items */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scanline animation for CRT/VHS effects */
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.animate-scanline {
+  animation: scanline 8s linear infinite;
+}
+
+/* Static noise animation */
+@keyframes staticNoise {
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+  10% {
+    background-position: -5% -10%;
+  }
+  20% {
+    background-position: -15% 5%;
+  }
+  30% {
+    background-position: 7% -25%;
+  }
+  40% {
+    background-position: 20% 25%;
+  }
+  50% {
+    background-position: -25% 10%;
+  }
+  60% {
+    background-position: 15% 5%;
+  }
+  70% {
+    background-position: 0% 15%;
+  }
+  80% {
+    background-position: 25% 35%;
+  }
+  90% {
+    background-position: -10% 10%;
+  }
+}
+
+/* Demogorgon petal animation */
+@keyframes demogoronPetal {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(5deg) scale(1.05);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.1);
+  }
+  75% {
+    transform: rotate(-5deg) scale(1.05);
+  }
+}
+
+.animate-demogorgon-petal {
+  animation: demogoronPetal 3s ease-in-out infinite;
+}
+
+/* Christmas light swing animation */
+@keyframes lightSwing {
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-light-swing {
+  transform-origin: top center;
+  animation: lightSwing 2s ease-in-out infinite;
+}
+
+/* Floating particle animation */
+@keyframes floatingParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.animate-floating-particle {
+  animation: floatingParticle 5s ease-in-out infinite;
+}
+
+/* Pulse glow for interactive elements */
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px var(--stranger-red), 0 0 10px var(--stranger-red);
+  }
+  50% {
+    box-shadow: 0 0 15px var(--stranger-red), 0 0 30px var(--stranger-red), 0 0 45px var(--stranger-red);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Text reveal animation for dramatic effects */
+@keyframes textReveal {
+  0% {
+    clip-path: inset(0 100% 0 0);
+    opacity: 0;
+  }
+  100% {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+  }
+}
+
+.animate-text-reveal {
+  animation: textReveal 1s ease-out forwards;
+}
+
+/* Eerie breathing animation for background elements */
+@keyframes eerieBreathing {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.5;
+  }
+}
+
+.animate-eerie-breathing {
+  animation: eerieBreathing 4s ease-in-out infinite;
+}
